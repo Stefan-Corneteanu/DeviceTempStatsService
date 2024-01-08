@@ -1,0 +1,56 @@
+cc_binary {
+
+    name: "devicetempstats_service",
+    srcs: ["native/src/**/*.cpp"],
+    local_include_dirs: ["native/src/impl"],
+    vendor: true,
+    init_rc: ["devicetempstats_service.rc"],
+
+    shared_libs: [
+        "liblog",
+        "libutils",
+        "libbase",
+        "libbinder_ndk",
+    ],
+
+    aidl: {
+        libs: ["devicetempstats_service_api"],
+    },
+
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-Wunused",
+        "-Wunreachable-code",
+        "-Wshadow"
+    ]
+}
+
+aidl_interface{
+    name: "devicetempstats_service_api",
+    vendor_available: true,
+    srcs: ["interfaces/**/**/**/*.aidl"],
+    local_include_dir: "interfaces",
+    versions: ["1"],
+    stability: "vintf",
+    backend: {
+
+        java: {
+            enabled: true,
+            platform_apis: true,
+        }, 
+
+        cpp: {
+            enabled: true,
+        },
+
+        ndk: {
+            enabled: true,
+        },
+
+        rust: {
+            enabled: true
+        },
+    }
+}

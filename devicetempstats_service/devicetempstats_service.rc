@@ -1,0 +1,7 @@
+service devicetempstats_service /vendor/bin/devicetempstats_service
+    class hal
+    user system
+    group system
+
+on boot
+    start devicetempstats_service
