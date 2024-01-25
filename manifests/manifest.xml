@@ -1,8 +1,8 @@
-<manifest version="1.0" type="framework">
+<manifest version="1.0" type="device">
     <hal format="aidl">
         <name>devicetempstats.service.api</name>
         <interface>
-            <name>IDeviceTempStatsService/name>
+            <name>IDeviceTempStatsService</name>
             <instance>default</instance>
         </interface>
     </hal>

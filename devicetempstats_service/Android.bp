@@ -11,11 +11,8 @@ cc_binary {
         "libutils",
         "libbase",
         "libbinder_ndk",
+        "devicetempstats.service.api-V2-ndk",
     ],
-
-    aidl: {
-        libs: ["devicetempstats_service_api"],
-    },
 
     cflags: [
         "-Wall",
@@ -23,23 +20,23 @@ cc_binary {
         "-Werror",
         "-Wunused",
         "-Wunreachable-code",
-        "-Wshadow"
-    ]
+        "-Wshadow",
+    ],
 }
 
-aidl_interface{
-    name: "devicetempstats_service_api",
+aidl_interface {
+    name: "devicetempstats.service.api",
     vendor_available: true,
-    srcs: ["interfaces/**/**/**/*.aidl"],
+    srcs: ["interfaces/**/*.aidl"],
     local_include_dir: "interfaces",
-    versions: ["1"],
+
     stability: "vintf",
     backend: {
 
         java: {
             enabled: true,
             platform_apis: true,
-        }, 
+        },
 
         cpp: {
             enabled: true,
@@ -50,7 +47,16 @@ aidl_interface{
         },
 
         rust: {
-            enabled: true
+            enabled: true,
         },
-    }
+    },
+    versions_with_info: [
+        {
+            version: "2",
+            imports: [],
+        },
+
+    ],
+    frozen: true,
+
 }

@@ -19,16 +19,17 @@ int main(){
 
     if (ABinderProcess_setThreadPoolMaxThreadCount(1)){
         
-        std::shared_ptr<dts_ns::DeviceTempStatsSystemService>dts_obj = dts_ns::DeviceTempStatsService.getInstance();
+        std::shared_ptr<dts_ns::DeviceTempStatsService>dts_obj = dts_ns::DeviceTempStatsService::getInstance();
         
         if (dts_obj){
-            binder_status_t status = AServiceManager_addService(dts_obj->asBinder().get(), dts_obj->getServiceName().c_str());
+            binder_status_t status = AServiceManager_addService(dts_obj->asBinder().get(), 
+            dts_obj->getServiceName().c_str());
             
-            if (status == STATUS.OK){
+            if (status == STATUS_OK){
                 int32_t version = -1;
                 dts_obj->getInterfaceVersion(&version);
                 ALOGI("%s: %d: service ready (registered version V%d)", __FUNCTION__, __LINE__, version);
-                ABinderprocess_joinThreadPool();
+                ABinderProcess_joinThreadPool();
                 ALOGW("%s: %d: service joined", __FUNCTION__, __LINE__);
             }
             else{

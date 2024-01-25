@@ -1,18 +1,19 @@
-#ifndef DEVICETEMPSTATSSERVICE
-#define DEVICETEMPSTATSSERVICE
+#ifndef DEVICETEMPSTATS_SERVICE
+#define DEVICETEMPSTATS_SERVICE
 
-#include <aidl/devicetempstats/service/api/BnDeviceTempStatsServiceInterface>
+#include <aidl/devicetempstats/service/api/BnDeviceTempStatsService.h>
 
 namespace dts_api_ns = ::aidl::devicetempstats::service::api;
 namespace devicetempstats{
     namespace service{
-        class DeviceTempStatsService : public ::dts_api_ns::BnDeviceTempStatsServiceInterface
+        class DeviceTempStatsService
+            : public dts_api_ns::BnDeviceTempStatsService
         {
         
         public:
             DeviceTempStatsService();
             ~DeviceTempStatsService();
-            ::std::shared_ptr<BnDeviceTempStatsServiceInterface> getInstance();
+            static ::std::shared_ptr<DeviceTempStatsService> getInstance();
             const ::std::string getServiceName(void){
                 return ::std::string() + descriptor + "/default";
             }
