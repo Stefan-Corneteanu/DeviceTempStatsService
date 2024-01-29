@@ -24,6 +24,15 @@ cc_binary {
     ],
 }
 
+prebuilt_etc {
+
+    name: "temperature_file",
+    src: "temperature_file.csv",
+    filename_from_src: true,
+    vendor: true,
+
+}
+
 aidl_interface {
     name: "devicetempstats.service.api",
     vendor_available: true,
