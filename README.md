@@ -35,6 +35,7 @@ lunch sdk_car_x86_64-eng
 make -j $(nproc --all)
 ```
 (m -j $(nproc --all) is an alternative for the make command)
+
 Note: this may take some time, around 1 hour 15 minutes if this is the first build, following builds take less
 
 # Testing (build successful required)
@@ -44,6 +45,7 @@ Note: this may take some time, around 1 hour 15 minutes if this is the first bui
 emulator -no-snapshot-load
 ```
 Note: there should not be any issue with the SEPolicy, running the emulator with "-selinux permissive" shouldn't be necessary
+
 3) Once the emulator started, in T2 run the following command
 ```shell
 adb logcat | grep -i devicetempstats
