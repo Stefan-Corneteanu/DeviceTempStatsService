@@ -16,7 +16,7 @@ chmod a+x ~/yourfolder/repo
 ```
 3) Initialize repo and sync an Android source (I used Android 14 for Raspberry PI found at https://github.com/android-rpi/local_manifests)
 ```shell
-repo init -u https://android.googlesource.com/platform/manifest -b android-14.0.0_r17
+repo init --depth 1 -u https://android.googlesource.com/platform/manifest -b android-14.0.0_r17
 git clone https://github.com/android-rpi/local_manifests .repo/local_manifests -b arpi-14
 repo sync -j $(nproc --all)
 ```
@@ -54,4 +54,4 @@ If a message saying "service ready (registered version V2)" appears then the ser
 
 # Known issues
 1) The temperature_file.csv was not properly included in the build after make command is run, therefore the service will not be able to instantiate as it has an input file stream to a non-existent file.
-Note: the service functionality was tested by replacing the input file stream with an input string stream built using as a parameter the .csv file's contents as a hardcoded string
+Note: the service functionality was tested by replacing the input file stream with an input string stream built using as a parameter the .csv file's contents as a hardcoded string and worked as expected.
