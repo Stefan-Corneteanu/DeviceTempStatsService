@@ -1,4 +1,3 @@
-// IDeviceTempStatsService.aidl
 ///////////////////////////////////////////////////////////////////////////////
 // THIS FILE IS IMMUTABLE. DO NOT EDIT IN ANY CASE.                          //
 ///////////////////////////////////////////////////////////////////////////////
@@ -20,7 +19,6 @@
 package devicetempstats.service.api;
 @VintfStability
 interface IDeviceTempStatsService {
-  void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat, double aDouble, String aString);
   float getCpuTemperature();
   float getGpuTemperature();
   float getAmbientTemperature();
