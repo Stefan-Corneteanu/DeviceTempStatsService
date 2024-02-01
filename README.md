@@ -20,7 +20,7 @@ repo init --depth 1 -u https://android.googlesource.com/platform/manifest -b and
 git clone https://github.com/android-rpi/local_manifests .repo/local_manifests -b arpi-14
 repo sync -j $(nproc --all)
 ```
-Note: sync command took me around 5 hours to finish
+Note: sync command took me around 5 hours to finish without --depth 1, with this flag it lasts around 1 hour 30 minutes
 
 # Usage
 1) With the AOSP source checked out, clone the repository into a folder under device
